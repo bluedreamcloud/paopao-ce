@@ -134,29 +134,10 @@ Sentry: # Sentry配置
   AttachGin: True     # gin是否附加到Sentry
 Logger: # 日志通用配置
   Level: debug # 日志级别 panic|fatal|error|warn|info|debug|trace
-LoggerFile: # 使用File写日志
-  SavePath: custom/data/paopao-ce/logs
-  FileName: app
-  FileExt: .log
-LoggerZinc: # 使用Zinc写日志
-  Host: zinc:4080
-  Index: paopao-log
-  User: admin
-  Password: admin
-  Secure: False
 LoggerMeili: # 使用Meili写日志
-  Host: meili:7700
+  Host: 192.168.180.130:7700
   Index: paopao-log
   ApiKey: paopao-meilisearch
-  Secure: False
-  MinWorker: 5               # 最小后台工作者, 设置范围[5, 100], 默认5
-  MaxLogBuffer: 100          # 最大log缓存条数, 设置范围[10, 10000], 默认100
-LoggerOpenObserve: # 使用OpenObserve写日志
-  Host: 127.0.0.1:5080
-  Organization: paopao-ce
-  Stream: default
-  User: root@paopao.info
-  Password: tiFEI8UeJWuYA7kN
   Secure: False
   MinWorker: 5               # 最小后台工作者, 设置范围[5, 100], 默认5
   MaxLogBuffer: 100          # 最大log缓存条数, 设置范围[10, 10000], 默认100
@@ -167,14 +148,8 @@ JWT: # 鉴权加密
 TweetSearch: # 推文关键字搜索相关配置
   MaxUpdateQPS: 100            # 最大添加/删除/更新Post的QPS，设置范围[10, 10000], 默认100
   MinWorker: 10                # 最小后台更新工作者, 设置范围[5, 1000], 默认10
-Zinc: # Zinc搜索配置
-  Host: zinc:4080
-  Index: paopao-data
-  User: admin
-  Password: admin
-  Secure: False
 Meili: # Meili搜索配置
-  Host: meili:7700
+  Host: 192.168.180.130:7700
   Index: paopao-data
   ApiKey: paopao-meilisearch
   Secure: False
@@ -222,28 +197,17 @@ Database: # Database通用配置
   LogLevel: error   # 日志级别 silent|error|warn|info
   TablePrefix: p_   # 表名前缀
 MySQL: # MySQL数据库
-  Username: paopao
-  Password: paopao
-  Host: db:3306
+  Username: root
+  Password: 123456
+  Host: 192.168.180.130:3306
   DBName: paopao
   Charset: utf8mb4
   ParseTime: True
   MaxIdleConns: 10
   MaxOpenConns: 30
-Postgres: # PostgreSQL数据库
-  User: paopao
-  Password: paopao
-  DBName: paopao
-  Schema: public
-  Host: localhost
-  Port: 5432
-  SSLMode: disable
-  ApplicationName:
-Sqlite3: # Sqlite3数据库
-  Path: custom/data/sqlite3/paopao-ce.db
 Redis:
   InitAddress:
-  - redis:6379
+  - 127.0.0.1:6379
   Username:
   Password:
   SelectDB:

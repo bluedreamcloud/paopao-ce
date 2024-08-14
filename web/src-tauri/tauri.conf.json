@@ -5,9 +5,10 @@
   },
   "build": {
     "distDir": "../dist",
-    "beforeDevCommand": "",
+    "withGlobalTauri": true,
+    "beforeDevCommand": "yarn dev",
     "beforeBuildCommand": "",
-    "withGlobalTauri": true
+    "devPath": "http://localhost:1421"
   },
   "tauri": {
     "macOSPrivateApi": true,

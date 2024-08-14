@@ -17,20 +17,20 @@ services:
     networks:
       - paopao-network
 
-  # minio:
-  #   image: bitnami/minio:latest
-  #   restart: always
-  #   environment:
-  #     MINIO_ROOT_USER: minio-root-user
-  #     MINIO_ROOT_PASSWORD: minio-root-password
-  #     MINIO_DEFAULT_BUCKETS: paopao:public
-  #   ports:
-  #     - 9000:9000
-  #     - 9001:9001
-  #   volumes:
-  #     - ./custom/data/minio/data:/data
-  #   networks:
-  #     - paopao-network
+  minio:
+     image: bitnami/minio:latest
+     restart: always
+     environment:
+       MINIO_ROOT_USER: minio-root-user
+       MINIO_ROOT_PASSWORD: minio-root-password
+       MINIO_DEFAULT_BUCKETS: paopao:public
+     ports:
+       - 9000:9000
+       - 9001:9001
+     volumes:
+       - ./custom/data/minio/data:/data
+     networks:
+       - paopao-network
 
   # redis:
   #   image: redis:7.2.1-alpine
@@ -78,13 +78,13 @@ services:
     networks:
       - paopao-network
 
-  # meilisearch-ui:
-  #   image: riccoxie/meilisearch-ui:latest
-  #   restart: always
-  #   ports:
-  #     - 24900:24900
-  #   networks:
-  #     - paopao-network
+  meilisearch-ui:
+     image: riccoxie/meilisearch-ui:latest
+     restart: always
+     ports:
+       - 24900:24900
+     networks:
+       - paopao-network
   
   # openobserve:
   #   image: public.ecr.aws/zinclabs/openobserve:latest
@@ -123,22 +123,22 @@ services:
   #   networks:
   #     - paopao-network
 
-  backend:
-    image: bitbus/paopao-ce:0.5
-    restart: always
-    depends_on:
-      - db
-      - redis
-      - meili
-    # modify below to reflect your custom configure
-    volumes:
-      - ./config.yaml.sample:/app/paopao-ce/config.yaml
-      - ./custom:/app/paopao-ce/custom
-    ports:
-      - 8008:8008
-    networks:
-      - paopao-network
-
+#  backend:
+#    image: bitbus/paopao-ce:0.5
+#    restart: always
+#    depends_on:
+#      - db
+#      - redis
+#      - meili
+#    # modify below to reflect your custom configure
+#    volumes:
+#      - ./config.yaml.sample:/app/paopao-ce/config.yaml
+#      - ./custom:/app/paopao-ce/custom
+#    ports:
+#      - 8008:8008
+#    networks:
+#      - paopao-network
+#
 networks:
   paopao-network:
       driver: bridge

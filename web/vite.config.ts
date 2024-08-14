@@ -8,7 +8,12 @@ import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    host: "0.0.0.0",
+    port: 1421,
+    strictPort: true,
+    watch: {
+      // 3. tell vite to ignore watching `src-tauri`
+      ignored: ["**/src-tauri/**"],
+    },
   },
   plugins: [
     vue({
